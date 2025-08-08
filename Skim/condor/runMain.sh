@@ -14,6 +14,14 @@ else
     echo ${_CONDOR_SCRATCH_DIR}
 	tar -zxf Skim.tar.gz
     cd Skim
+    # Setup ROOT/CMS environment for building
+    if [ -f /cvmfs/cms.cern.ch/cmsset_default.sh ]; then
+        source /cvmfs/cms.cern.ch/cmsset_default.sh
+    fi
+    if command -v root-config >/dev/null 2>&1; then
+        export LD_LIBRARY_PATH=$(root-config --libdir):$LD_LIBRARY_PATH
+        export LIBRARY_PATH=$(root-config --libdir):$LIBRARY_PATH
+    fi
     make clean
     make
 fi

@@ -1,0 +1,24 @@
+
+{
+    "2024": {
+        "MC": {
+            "TTtoLNu2Q": {
+              "MC_2024_Wqqm_TTtoLNu2Q"  : "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Winter24NanoAOD-JMENanoV14_133X_mcRun3_2024_realistic_v10-v2/NANOAODSIM"
+          }
+      },
+        "DataReprocessing": {
+            "2024C": {
+                "DataReprocessing_2024C_Wqqm_Muon0": "/Muon0/Run2024C-2024CDEReprocessing-v1/NANOAOD",
+                "DataReprocessing_2024C_Wqqm_Muon1": "/Muon1/Run2024C-2024CDEReprocessing-v1/NANOAOD"
+            },
+            "2024D": {
+                "DataReprocessing_2024D_Wqqm_Muon0": "/Muon0/Run2024D-2024CDEReprocessing-v1/NANOAOD",
+                "DataReprocessing_2024D_Wqqm_Muon1": "/Muon1/Run2024D-2024CDEReprocessing-v1/NANOAOD"
+            },
+            "2024E": {
+                "DataReprocessing_2024E_Wqqm_Muon0": "/Muon0/Run2024E-2024CDEReprocessing-v1/NANOAOD",
+                "DataReprocessing_2024E_Wqqm_Muon1": "/Muon1/Run2024E-2024CDEReprocessing-v1/NANOAOD"
+            }
+        }
+    }
+}

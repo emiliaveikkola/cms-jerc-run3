@@ -121,15 +121,16 @@ Error  = %s/log_$(cluster)_$(process).stderr\n\n' % (vomsProxy, logDir, logDir, 
     data = json.load(jsonFile)
     jdlFile.write('Executable =  runMain.sh \n')
     jdlFile.write(common_command)
+    # Generate one queue with explicit infile/outdir pairs
+    jdlFile.write("arguments = $(in) $(out)\n")
+    jdlFile.write("queue in, out from (\n")
     for sKey, skims in data.items():
-        jdlFile.write("\n")
         for skim in skims:
-            outDir  = skim.split(sKey)[0]
-            restStr = skim.split(sKey)[1]
-            oName   = "%s%s" % (sKey, restStr)
-            args = 'Arguments  = %s %s\n' % (oName, outDir)
-            args += "Queue 1\n"
-            jdlFile.write(args)
+            outDir = skim.rsplit(sKey, 1)[0]
+            restStr = skim.split(sKey, 1)[1]
+            oName = f"{sKey}{restStr}"
+            jdlFile.write(f"  {oName} {outDir}\n")
+    jdlFile.write(")\n")
 
 if __name__ == "__main__":
     # --- Step 1: Check Git status ---

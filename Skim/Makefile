@@ -21,7 +21,7 @@ BINS      := runMain
 # Compiler flags:
 #   -MMD -MP to generate .d files for all headers automatically.
 CXXFLAGS  = $(ROOT_I) -MMD -MP
-LDFLAGS   = $(ROOT_L)
+LDFLAGS   = $(ROOT_L) -lstdc++fs
 
 # Primary target: build the main executable
 $(BINS): $(OBJECTS) main.cpp

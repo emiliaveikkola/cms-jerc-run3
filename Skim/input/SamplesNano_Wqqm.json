@@ -2,13 +2,69 @@
 {
     "2024": {
         "MC": {
-              "TTtoLNu2Q": {
+            "TTtoLNu2Q": {
                 "MC_2024_Wqqm_TTtoLNu2Q"  : "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Winter24NanoAOD-JMENanoV14_133X_mcRun3_2024_realistic_v10-v2/NANOAODSIM"
             }
         },
+        "MCSummer24": {
+            "TTtoLNu2Q": {
+                "MCSummer24_2024_Wqqm_TTtoLNu2Q"  : "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAOD-140X_mcRun3_2024_realistic_v26-v2/NANOAODSIM"
+            }
+        },
         "Data": {
-             "2024C":{
-                "Data_2024C_Wqqm_EGamma0"      : "/Muon1/Run2024C-PromptReco-v1/NANOAOD"
+            "2024A": {
+                "Data_2024A_Wqqm_Muon0": "/Muon0/Run2024A-PromptReco-v1/NANOAOD",
+                "Data_2024A_Wqqm_Muon1": "/Muon1/Run2024A-PromptReco-v1/NANOAOD"
+            },
+            "2024B": {
+                "Data_2024B_Wqqm_Muon0": "/Muon0/Run2024B-PromptReco-v1/NANOAOD",
+                "Data_2024B_Wqqm_Muon1": "/Muon1/Run2024B-PromptReco-v1/NANOAOD"
+            },
+            "2024C": {
+                "Data_2024C_Wqqm_Muon0": "/Muon0/Run2024C-PromptReco-v1/NANOAOD",
+                "Data_2024C_Wqqm_Muon1": "/Muon1/Run2024C-PromptReco-v1/NANOAOD"
+            },
+            "2024D": {
+                "Data_2024D_Wqqm_Muon0": "/Muon0/Run2024D-PromptReco-v1/NANOAOD",
+                "Data_2024D_Wqqm_Muon1": "/Muon1/Run2024D-PromptReco-v1/NANOAOD"
+            },
+            "2024E": {
+                "Data_2024E_Wqqm_Muon0v1": "/Muon0/Run2024E-PromptReco-v1/NANOAOD",
+                "Data_2024E_Wqqm_Muon0v2": "/Muon0/Run2024E-PromptReco-v2/NANOAOD",
+                "Data_2024E_Wqqm_Muon1v1": "/Muon1/Run2024E-PromptReco-v1/NANOAOD",
+                "Data_2024E_Wqqm_Muon1v2": "/Muon1/Run2024E-PromptReco-v2/NANOAOD"
+            },
+            "2024F": {
+                "Data_2024F_Wqqm_Muon0": "/Muon0/Run2024F-PromptReco-v1/NANOAOD",
+                "Data_2024F_Wqqm_Muon1": "/Muon1/Run2024F-PromptReco-v1/NANOAOD"
+            },
+            "2024G": {
+                "Data_2024G_Wqqm_Muon0": "/Muon0/Run2024G-PromptReco-v1/NANOAOD",
+                "Data_2024G_Wqqm_Muon1": "/Muon1/Run2024G-PromptReco-v1/NANOAOD"
+            },
+            "2024H": {
+                "Data_2024H_Wqqm_Muon0": "/Muon0/Run2024H-PromptReco-v1/NANOAOD",
+                "Data_2024H_Wqqm_Muon1": "/Muon1/Run2024H-PromptReco-v1/NANOAOD"
+            },
+            "2024I": {
+                "Data_2024I_Wqqm_Muon0v1": "/Muon0/Run2024I-PromptReco-v1/NANOAOD",
+                "Data_2024I_Wqqm_Muon0v2": "/Muon0/Run2024I-PromptReco-v2/NANOAOD",
+                "Data_2024I_Wqqm_Muon1v1": "/Muon1/Run2024I-PromptReco-v1/NANOAOD",
+                "Data_2024I_Wqqm_Muon1v2": "/Muon1/Run2024I-PromptReco-v2/NANOAOD"
+            }
+        }
+    },
+    "2025": {
+        "Data": {
+            "2025C": {
+                "Data_2025C_Wqqm_Muon0v1": "/Muon0/Run2025C-PromptReco-v1/NANOAOD",
+                "Data_2025C_Wqqm_Muon0v2": "/Muon0/Run2025C-PromptReco-v2/NANOAOD",
+                "Data_2025C_Wqqm_Muon1v1": "/Muon1/Run2025C-PromptReco-v1/NANOAOD",
+                "Data_2025C_Wqqm_Muon1v2": "/Muon1/Run2025C-PromptReco-v2/NANOAOD"
+            },
+            "2025D": {
+                "Data_2025D_Wqqm_Muon0": "/Muon0/Run2025D-PromptReco-v1/NANOAOD",
+                "Data_2025D_Wqqm_Muon1": "/Muon1/Run2025D-PromptReco-v1/NANOAOD"
             }
         }
     }

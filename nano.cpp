@@ -293,8 +293,6 @@ void NanoTree::loadJobFileNames() {
     fChain->SetBranchStatus("Jet_btagUParTAK4QvG",1);
     fChain->SetBranchStatus("Jet_chEmEF",1);
     fChain->SetBranchStatus("Jet_chHEF" ,1);
-    fChain->SetBranchStatus("Jet_chMultiplicity" ,1);
-    fChain->SetBranchStatus("Jet_neMultiplicity" ,1);
     fChain->SetBranchStatus("Jet_eta"   ,1);
     fChain->SetBranchStatus("Jet_mass"  ,1);
     fChain->SetBranchStatus("Jet_muEF"  ,1);
@@ -304,21 +302,14 @@ void NanoTree::loadJobFileNames() {
     fChain->SetBranchStatus("Jet_neHEF" ,1);
     fChain->SetBranchStatus("Jet_phi"   ,1);
     fChain->SetBranchStatus("Jet_pt"    ,1);
-    fChain->SetBranchStatus("Jet_hadronFlavour", 1); //only if MC
-    fChain->SetBranchStatus("Jet_partonFlavour", 1); // only if MC
     fChain->SetBranchStatus("Jet_rawFactor",1);
-    //fChain->SetBranchStatus("Jet_jetId",1);
+    fChain->SetBranchStatus("Jet_jetId",1);
     fChain->SetBranchStatus("Jet_area",1);
     fChain->SetBranchStatus("nJet",1);
 
-    fChain->SetBranchStatus("Jet_btagUParTAK4B", 1);   
-    fChain->SetBranchStatus("Jet_muonIdx1", 1);
-    fChain->SetBranchStatus("Jet_muonIdx2", 1);
-    fChain->SetBranchStatus("Jet_jetId", 1);
-
     //common branches
 	fChain->SetBranchStatus("PV_z");
-	//fChain->SetBranchStatus("GenVtx_z");
+	fChain->SetBranchStatus("GenVtx_z");
     fChain->SetBranchStatus("PV_npvs",1);
     fChain->SetBranchStatus("PV_npvsGood",1);
     if(globalFlags_.is2024 && globalFlags_.isData){
