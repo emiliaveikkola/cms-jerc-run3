@@ -43,13 +43,13 @@ Year2024 = {
 }
 
 Year2025 = {
-    "MC": [
+    "MCWinter25": [
         #"GJets", "QCD"
-        #"TTtoLNu2Q"
+        "TTtoLNu2Q"
     ],
     "Data": [
         #"2025C", "2025D"
-        "2025E"
+        #"2025E"
     ],
 }
 

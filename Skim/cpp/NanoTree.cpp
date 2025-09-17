@@ -304,8 +304,6 @@ void NanoTree::loadJobFileNames() {
     fChain->SetBranchStatus("Jet_neHEF" ,1);
     fChain->SetBranchStatus("Jet_phi"   ,1);
     fChain->SetBranchStatus("Jet_pt"    ,1);
-    fChain->SetBranchStatus("Jet_hadronFlavour", 1); //only if MC
-    fChain->SetBranchStatus("Jet_partonFlavour", 1); // only if MC
     fChain->SetBranchStatus("Jet_rawFactor",1);
     //fChain->SetBranchStatus("Jet_jetId",1);
     fChain->SetBranchStatus("Jet_area",1);
@@ -361,6 +359,8 @@ void NanoTree::loadJobFileNames() {
         fChain->SetBranchStatus("PSWeight",1);
         fChain->SetBranchStatus("nPSWeight",1);
         fChain->SetBranchStatus("genWeight",1);
+        fChain->SetBranchStatus("Jet_hadronFlavour", 1);
+        fChain->SetBranchStatus("Jet_partonFlavour", 1);
 		/*
         fChain->SetBranchStatus("GenPart_*",1);
         fChain->SetBranchStatus("nGenPart",1);

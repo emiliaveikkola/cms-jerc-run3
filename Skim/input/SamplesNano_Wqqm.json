@@ -55,6 +55,11 @@
         }
     },
     "2025": {
+        "MCWinter25": {
+            "TTtoLNu2Q": {
+                "MCWinter25_2025_Wqqm_TTtoLNu2Q"  : "/TTToLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/Run3Winter25NanoAOD-142X_mcRun3_2025_realistic_v7-v2/NANOAODSIM"
+            }
+        },
         "Data": {
             "2025C": {
                 "Data_2025C_Wqqm_Muon0v1": "/Muon0/Run2025C-PromptReco-v1/NANOAOD",

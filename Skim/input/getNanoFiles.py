@@ -118,7 +118,8 @@ def main():
             # ---------------------------
             # Process MC samples: one output per sub-category
             #mcName = "MC"
-            mcName = "MCSummer24"
+            #mcName = "MCSummer24"
+            mcName  = "MCWinter25"
             # ---------------------------
             mcDesired = yinfo.get(mcName, [])
             # For each desired MC sub-category, loop over periods whose key starts with the given year
