@@ -74,6 +74,10 @@
             "2025E": {
                 "Data_2025E_Wqqm_Muon0": "/Muon0/Run2025E-PromptReco-v1/NANOAOD",
                 "Data_2025E_Wqqm_Muon1": "/Muon1/Run2025E-PromptReco-v1/NANOAOD"
+            },
+            "2025F": {
+                "Data_2025F_Wqqm_Muon0": "/Muon0/Run2025F-PromptReco-v1/NANOAOD",
+                "Data_2025F_Wqqm_Muon1": "/Muon1/Run2025F-PromptReco-v1/NANOAOD"
             }
         }
     }

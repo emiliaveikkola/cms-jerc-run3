@@ -316,7 +316,6 @@ void NanoTree::loadJobFileNames() {
 
     //common branches
 	fChain->SetBranchStatus("PV_z");
-	//fChain->SetBranchStatus("GenVtx_z");
     fChain->SetBranchStatus("PV_npvs",1);
     fChain->SetBranchStatus("PV_npvsGood",1);
     if(globalFlags_.is2024 && globalFlags_.isData){
@@ -349,6 +348,7 @@ void NanoTree::loadJobFileNames() {
 	    fChain->SetBranchStatus("Pileup_*",1);
         fChain->SetBranchStatus("GenJet_*",1);
         fChain->SetBranchStatus("nGenJet",1);
+        fChain->SetBranchStatus("GenVtx_z");
 
         fChain->SetBranchStatus("Generator_weight",1);
         fChain->SetBranchStatus("nLHEScaleWeight",1);
