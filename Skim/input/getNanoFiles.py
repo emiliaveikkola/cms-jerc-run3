@@ -4,6 +4,8 @@ import sys
 import subprocess
 import json
 from pathlib import Path
+import ROOT
+ROOT.gROOT.SetBatch(True)
 
 # ------------------------------------------------------------------
 # Import configuration from Inputs.py
@@ -72,6 +74,88 @@ def getEvents(dataset):
         print(f"Error fetching event count for dataset '{dataset}': {e}")
         return 0
 
+def getFilesFromEOS(eos_dir):
+    """
+    List ROOT files under an EOS directory and return them as /store/... paths
+    (to match the format returned by dasgoclient).
+    """
+    try:
+        # Ensure no trailing slash
+        eos_dir = eos_dir.rstrip('/')
+
+        # xrdfs needs the full EOS path, e.g. /eos/cms/store/...
+        cmd = ["xrdfs", "root://eoscms.cern.ch", "ls", eos_dir]
+        output = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+        lines = output.decode('utf-8').strip().splitlines()
+
+        files = []
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            # If this is a directory, recurse
+            if not line.endswith(".root"):
+                # optional: recurse into subdirs (Winter25 layout has subdirs)
+                sub_cmd = ["xrdfs", "root://eoscms.cern.ch", "ls", line]
+                sub_out = subprocess.check_output(sub_cmd, stderr=subprocess.STDOUT)
+                for sub_line in sub_out.decode('utf-8').strip().splitlines():
+                    sub_line = sub_line.strip()
+                    if sub_line.endswith(".root"):
+                        # strip the /eos/cms prefix to get /store/...
+                        if sub_line.startswith("/eos/cms"):
+                            sub_line = sub_line[len("/eos/cms"):]
+                        files.append(sub_line)
+            else:
+                # direct .root file
+                if line.startswith("/eos/cms"):
+                    line = line[len("/eos/cms"):]
+                files.append(line)
+
+        print(f"[EOS getFiles] Found {len(files)} files under {eos_dir}")
+        return files
+
+    except subprocess.CalledProcessError as e:
+        print(f"[EOS getFiles] Error listing EOS dir '{eos_dir}': {e.output.decode('utf-8')}")
+        return []
+
+def getEventsFromFiles(files):
+    """
+    Count events by opening the ROOT files via xrootd and summing
+    Entries in the 'Events' tree.
+    'files' should be a list of paths like /store/mc/...
+    """
+    import ROOT
+    ROOT.gROOT.SetBatch(True)
+
+    total = 0
+    for path in files:
+        # path is like "/store/mc/Run3Winter25NanoAOD/..."
+        # Use the CMS global redirector and make sure the path is absolute.
+        url = "root://xrootd-cms.infn.it//" + path.lstrip('/')
+        print(f"[getEventsFromFiles] Opening {url}")
+        try:
+            tf = ROOT.TFile.Open(url)
+        except OSError as e:
+            print(f"[getEventsFromFiles] ERROR: could not open {url}: {e}")
+            continue
+
+        if not tf or tf.IsZombie():
+            print(f"[getEventsFromFiles] WARNING: zombie or null file {url}")
+            continue
+
+        tree = tf.Get("Events")
+        if not tree:
+            print(f"[getEventsFromFiles] WARNING: no 'Events' tree in {url}")
+            tf.Close()
+            continue
+
+        n = tree.GetEntries()
+        total += n
+        tf.Close()
+
+    print(f"[getEventsFromFiles] Total events from files = {total}")
+    return total               
+
 def formatNum(num):
     """
     Formats a number into a human-readable string with suffixes.
@@ -118,8 +202,8 @@ def main():
             # ---------------------------
             # Process MC samples: one output per sub-category
             #mcName = "MC"
-            #mcName = "MCSummer24"
-            mcName  = "MCWinter25"
+            mcName = "MCSummer24"
+            #mcName  = "MCWinter25"
             # ---------------------------
             mcDesired = yinfo.get(mcName, [])
             # For each desired MC sub-category, loop over periods whose key starts with the given year
@@ -140,13 +224,27 @@ def main():
                         #print(f"      Querying sample {sampleKey} ...")
                         filesNano = getFiles(dataset)
                         if not filesNano:
-                            print(f"        PROBLEM: No files found for dataset '{dataset}'.\n")
-                            continue
+                            print("  DAS returned 0 files — trying EOS fallback...")
+
+                            eosPath = dataset.replace(
+                                "/TTToLNu2Q_TuneCP5_13p6TeV_powheg-pythia8",
+                                "/store/mc/Run3Winter25NanoAOD/TTToLNu2Q_TuneCP5_13p6TeV_powheg-pythia8"
+                            ).replace(
+                                "/Run3Winter25NanoAOD-142X_mcRun3_2025_realistic_v7-v2/NANOAODSIM",
+                                "/NANOAODSIM/142X_mcRun3_2025_realistic_v7-v2"
+                            )
+
+                            print("EOS path = ", eosPath)
+                            filesNano = getFilesFromEOS(eosPath)
                         nFiles = len(filesNano)
                         nEvents = getEvents(dataset)
+                        # If DAS has no summary (0 events) but we *do* have files → count from files
+                        if nEvents == 0 and nFiles > 0:
+                            print(f"[INFO] DAS returned 0 events for {dataset}, counting events from files...")
+                            nEvents = getEventsFromFiles(filesNano)
+
                         evtStr = formatNum(nEvents)
                         mcFilesNano[sampleKey] = [[evtStr, nEvents, nFiles], filesNano]
-                        allEventsYear += nEvents
                         print(f"        {nFiles}\t {evtStr}\t {sampleKey}")
 
                 # Write out JSON for this MC sub-category (if not empty)

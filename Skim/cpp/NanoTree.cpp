@@ -284,6 +284,7 @@ void NanoTree::loadJobFileNames() {
     fChain->SetBranchStatus("run", true);
     fChain->SetBranchStatus("event", true);
     fChain->SetBranchStatus("luminosityBlock", true);
+    fChain->SetBranchStatus("bunchCrossing", true);
 
 	//--------------------------------------- 
     // Jet branches for all channels 
@@ -361,14 +362,13 @@ void NanoTree::loadJobFileNames() {
         fChain->SetBranchStatus("genWeight",1);
         fChain->SetBranchStatus("Jet_hadronFlavour", 1);
         fChain->SetBranchStatus("Jet_partonFlavour", 1);
-		/*
+		
         fChain->SetBranchStatus("GenPart_*",1);
         fChain->SetBranchStatus("nGenPart",1);
         fChain->SetBranchStatus("GenJetAK8_*",1);
         fChain->SetBranchStatus("nGenJetAK8",1);
         fChain->SetBranchStatus("LHEPdfWeight",1);
         // weight
-		*/
     }//MC
 
     filterList = { 

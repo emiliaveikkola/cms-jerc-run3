@@ -110,9 +110,10 @@ when_to_transfer_output = ON_EXIT\n\
 Transfer_Input_Files = Skim.tar.gz, runMain.sh\n\
 x509userproxy        = %s\n\
 +MaxRuntime = 60*60*24\n\
+request_memory = 7000\n\
 max_retries = 2\n\
 Output = %s/log_$(cluster)_$(process).stdout\n\
-Log = %s/log_$(cluster)_$(process).log\n\
+Log = %s/log_$(cluster).log\n\
 Error  = %s/log_$(cluster)_$(process).stderr\n\n' % (vomsProxy, logDir, logDir, logDir)
 
     #---------------------------------------------

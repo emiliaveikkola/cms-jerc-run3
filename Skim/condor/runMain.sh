@@ -7,6 +7,12 @@ myArray=( "$@" )
 printf "Start skimming at ";/bin/date
 printf "Worker node hostname ";/bin/hostname
 
+# ---- prevent AFS quota issues from ccache and other caches ----
+export CCACHE_DISABLE=1
+export XDG_CACHE_HOME="${_CONDOR_SCRATCH_DIR:-/tmp/$USER}/.cache"
+export TMPDIR="${_CONDOR_SCRATCH_DIR:-/tmp/$USER}"
+mkdir -p "$XDG_CACHE_HOME" "$TMPDIR"
+
 if [ -z ${_CONDOR_SCRATCH_DIR} ] ; then 
     echo "Running Interactively" ; 
 else
