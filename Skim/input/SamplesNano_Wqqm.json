@@ -8,7 +8,7 @@
         },
         "MCSummer24": {
             "TTtoLNu2Q": {
-                "MCSummer24_2024_Wqqm_TTtoLNu2Q"  : "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAOD-140X_mcRun3_2024_realistic_v26-v2/NANOAODSIM"
+                "MCSummer24_2024_Wqqm_TTtoLNu2Q"  : "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-JMENanoV15_150X_mcRun3_2024_realistic_v2-v1/NANOAODSIM"
             }
         },
         "Data": {
@@ -114,6 +114,18 @@
                 "Data_2026B_Wqqm_Muon1": "/Muon1/Run2026B-PromptReco-v1/NANOAOD",
                 "Data_2026B_Wqqm_Muon2": "/Muon2/Run2026B-PromptReco-v1/NANOAOD",
                 "Data_2026B_Wqqm_Muon3": "/Muon3/Run2026B-PromptReco-v1/NANOAOD"
+            },
+            "2026C": {
+                "Data_2026C_Wqqm_Muon0": "/Muon0/Run2026C-PromptReco-v1/NANOAOD",
+                "Data_2026C_Wqqm_Muon1": "/Muon1/Run2026C-PromptReco-v1/NANOAOD",
+                "Data_2026C_Wqqm_Muon2": "/Muon2/Run2026C-PromptReco-v1/NANOAOD",
+                "Data_2026C_Wqqm_Muon3": "/Muon3/Run2026C-PromptReco-v1/NANOAOD"
+            },
+            "2026D": {
+                "Data_2026D_Wqqm_Muon0": "/Muon0/Run2026D-PromptReco-v1/NANOAOD",
+                "Data_2026D_Wqqm_Muon1": "/Muon1/Run2026D-PromptReco-v1/NANOAOD",
+                "Data_2026D_Wqqm_Muon2": "/Muon2/Run2026D-PromptReco-v1/NANOAOD",
+                "Data_2026D_Wqqm_Muon3": "/Muon3/Run2026D-PromptReco-v1/NANOAOD"
             }
         }
     }
